@@ -3,7 +3,7 @@
 ## Overview
 
 This repository holds the codebase for Manipulator Motion Planning project of ENPM808X at UMD,College Park.<br>
-It captures FK and self collision avoidance aware IK, and Task space/Joint space level motion planning, for a 6DoF Serial manipulator.<br>
+It captures FK and IK, and Task space/Joint space level motion planning, for a 6DoF Serial manipulator.<br>
 More details to come soon!<br>
 
 ## Authors
