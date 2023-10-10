@@ -1,5 +1,7 @@
 # MANIPULATOR_MOTION_PLANNING
 
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
 ## Overview
 
 This repository holds the codebase for Manipulator Motion Planning project of ENPM808X at UMD,College Park.<br>
