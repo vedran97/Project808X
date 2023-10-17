@@ -5,5 +5,8 @@
                          "--background-index", 
                          "--compile-commands-dir=./",
                         "-j=4",
-                    "--enable-config"]
+                    "--enable-config"
+                ],
+                "git.inputValidationLength": 500,
+                "git.inputValidationSubjectLength": null
 }

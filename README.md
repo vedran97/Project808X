@@ -1,9 +1,12 @@
 # MANIPULATOR_MOTION_PLANNING
 
+![CICD Workflow status](https://github.com/vedran97/Project808X/actions/workflows/run-unit-test-and-upload-codecov.yml/badge.svg) [![codecov](https://codecov.io/gh/vedran97/Project808X/branch/main/graph/badge.svg)](https://codecov.io/gh/vedran97/Project808X) 
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
 ## Overview
 
 This repository holds the codebase for Manipulator Motion Planning project of ENPM808X at UMD,College Park.<br>
-It captures FK and self collision avoidance aware IK, and Task space/Joint space level motion planning, for a 6DoF Serial manipulator.<br>
+It captures FK and IK, and Task space/Joint space level motion planning, for a 6DoF Serial manipulator.<br>
 More details to come soon!<br>
 
 ## Authors
@@ -53,8 +56,34 @@ More details to come soon!<br>
 # run clang-format
   clang-format -i --style=Google $(find . -name *.cpp -o -name *.hpp | grep -vE -e "^./build/")
 # run cppcheck 
-  mkdir output -p && cppcheck --enable=all --std=c++11 -I include/ --suppress=missingInclude $( find . -name *.cpp | grep -vE -e "^./build/" ) &> results/cppcheck
+  mkdir results -p && cppcheck --enable=all --std=c++11 -I include/ --suppress=missingInclude $( find . -name *.cpp | grep -vE -e "^./build/" ) &> results/cppcheck
 #run cpplint
-  mkdir output -p && cpplint --filter="-legal/copyright" $( find . -name *.cpp | grep -vE -e "^./build/" ) &> results/cpplint
+  mkdir results -p && cpplint --filter="-legal/copyright" $( find . -name *.cpp | grep -vE -e "^./build/" ) &> results/cpplint
 
+```
+
+## Building for code coverage
+
+```bash
+# if you don't have gcovr or lcov installed, do:
+  sudo apt-get install gcovr lcov
+# Set the build type to Debug and WANT_COVERAGE=ON
+  cmake -D WANT_COVERAGE=ON -D CMAKE_BUILD_TYPE=Debug -S ./ -B build/
+# Now, do a clean compile, run unit test, and generate the covereage report
+  cmake --build build/ --clean-first --target all test_coverage
+# open a web browser to browse the test coverage report
+  open build/test_coverage/index.html
+
+This generates a index.html page in the build/test_coverage sub-directory that can be viewed locally in a web browser.
+```
+
+You can also get code coverage report for the *shell-app* target, instead of unit test. Repeat the previous 2 steps but with the *app_coverage* target:
+
+``` bash
+# Now, do another clean compile, run shell-app, and generate its covereage report
+  cmake --build build/ --clean-first --target all app_coverage
+# open a web browser to browse the test coverage report
+  open build/app_coverage/index.html
+
+This generates a index.html page in the build/app_coverage sub-directory that can be viewed locally in a web browser.
 ```
