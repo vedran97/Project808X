@@ -7,6 +7,9 @@
 
 This repository holds the codebase for Manipulator Motion Planning project of ENPM808X at UMD,College Park.<br>
 It captures FK and IK, and Task space/Joint space level motion planning, for a 6DoF Serial manipulator.<br>
+The UML folder captures the design diagrams used for this project.<br>
+Group1_ENPM808X_Midterm_Proposal.pdf contains our proposal towards this project.<br>
+Group1_Midterm_QuadChart.pdf contains the QuadChart for this project. <br>
 More details to come soon!<br>
 
 ## Authors
