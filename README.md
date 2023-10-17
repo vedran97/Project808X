@@ -1,5 +1,6 @@
 # MANIPULATOR_MOTION_PLANNING
 
+![CICD Workflow status](https://github.com/vedran97/Project808X/actions/workflows/run-unit-test-and-upload-codecov.yml/badge.svg) [![codecov](https://codecov.io/gh/vedran97/Project808X/branch/main/graph/badge.svg)](https://codecov.io/gh/vedran97/Project808X) 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ## Overview
