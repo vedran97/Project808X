@@ -50,14 +50,16 @@ namespace a3c
     */
     class ForwardKinematics
     {
-    private:
+    public: 
         constexpr static const size_t mNumDHRows = 6;
         constexpr static const size_t mNumDHCols = 4;
+        using DHTable = Eigen::Array<double, mNumDHRows, mNumDHCols>;
+
+    private:
         constexpr static const size_t alphaIndex = 0;
         constexpr static const size_t aIndex = 1;
         constexpr static const size_t dIndex = 2;
         constexpr static const size_t thetaIndex = 3;
-        using DHTable = Eigen::Array<double, mNumDHRows, mNumDHCols>;
         DHTable dhTable;
         /**
          * Declaring these for the A3C here, later can be read from a file in the constructor and set
