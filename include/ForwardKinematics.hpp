@@ -1,7 +1,16 @@
-#pragma once
+/**
+ * @file ForwardKinematics.hpp
+ * @author Jerry Pittman, Jr. (jpittma1@umd.edu)
+ * @brief ForwardKinematics, Pose Struct, and DHParams Structt
+ * @version 0.1
+ * @date 2023-10-21
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
 
-#ifndef ForwardKinematics_hpp
-#define ForwardKinematics_hpp
+#ifndef ForwardKinematics_HPP
+#define ForwardKinematics_HPP
 
 #include <algorithm>
 #include <array>
@@ -34,7 +43,7 @@ namespace a3c
         DHParams(float d1, float d2, float d3,
                  float d4, float d5, float d6, float a2);
     };
-    class Kinematics
+    class ForwardKinematics
     {
     private:
         constexpr static const size_t mNumDHRows = 6;
@@ -52,7 +61,7 @@ namespace a3c
 
     public:
         Pose fk(const JointAngles &ja) noexcept;
-        Kinematics() noexcept;
+        ForwardKinematics() noexcept;
         Matrix4d getTransformationMatrix(const Eigen::Array<double, 1, mNumDHCols> &dhRow) const noexcept;
     };
 }
