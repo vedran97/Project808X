@@ -41,7 +41,7 @@ namespace a3c
         Matrix4d ForwardTransformationMatrix;
 
     public:
-        InverseKinematics() noexcept;
+        InverseKinematics(const Eigen::Matrix4d &FM) noexcept;
         std::vector <JointAngles> ik(const JointAngles& currentAngles, const JointAngles& targetAngles);
     };
 }

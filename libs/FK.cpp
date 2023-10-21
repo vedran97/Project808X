@@ -46,6 +46,12 @@ namespace a3c
         // TODO: add implementation
         return Pose(T);
     }
+    /**
+     * @brief Gets Transformation Matrix
+     * 
+     * @param dhRow 
+     * @return Matrix4d 
+     */
     Matrix4d ForwardKinematics::getTransformationMatrix(const Eigen::Array<double, 1, mNumDHCols> &dhRow) const noexcept
     {
     //    TODO: Add implementation
