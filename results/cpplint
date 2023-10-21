@@ -1,0 +1,34 @@
+./app/main.cpp:14:  Line ends in whitespace.  Consider deleting these extra spaces.  [whitespace/end_of_line] [4]
+./app/main.cpp:16:  Could not find a newline character at the end of the file.  [whitespace/ending_newline] [5]
+./libs/FK.cpp:19:  { should almost always be at the end of the previous line  [whitespace/braces] [4]
+./libs/FK.cpp:25:  { should almost always be at the end of the previous line  [whitespace/braces] [4]
+./libs/FK.cpp:44:  { should almost always be at the end of the previous line  [whitespace/braces] [4]
+./libs/FK.cpp:46:  Missing username in TODO; it should look like "// TODO(my_username): Stuff."  [readability/todo] [2]
+./libs/FK.cpp:55:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+./libs/FK.cpp:56:  { should almost always be at the end of the previous line  [whitespace/braces] [4]
+./libs/FK.cpp:57:  Too many spaces before TODO  [whitespace/todo] [2]
+./libs/FK.cpp:57:  Missing username in TODO; it should look like "// TODO(my_username): Stuff."  [readability/todo] [2]
+./libs/FK.cpp:59:  Line ends in whitespace.  Consider deleting these extra spaces.  [whitespace/end_of_line] [4]
+./libs/FK.cpp:77:  { should almost always be at the end of the previous line  [whitespace/braces] [4]
+./libs/FK.cpp:88:  { should almost always be at the end of the previous line  [whitespace/braces] [4]
+./libs/FK.cpp:89:  Too many spaces before TODO  [whitespace/todo] [2]
+./libs/FK.cpp:89:  Missing username in TODO; it should look like "// TODO(my_username): Stuff."  [readability/todo] [2]
+./libs/FK.cpp:92:  Namespace should be terminated with "// namespace a3c"  [readability/namespace] [5]
+./libs/FK.cpp:92:  Could not find a newline character at the end of the file.  [whitespace/ending_newline] [5]
+./libs/IK.cpp:17:  { should almost always be at the end of the previous line  [whitespace/braces] [4]
+./libs/IK.cpp:24:  { should almost always be at the end of the previous line  [whitespace/braces] [4]
+./libs/IK.cpp:34:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+./libs/IK.cpp:35:  { should almost always be at the end of the previous line  [whitespace/braces] [4]
+./libs/IK.cpp:36:  Missing username in TODO; it should look like "// TODO(my_username): Stuff."  [readability/todo] [2]
+./libs/IK.cpp:39:  Namespace should be terminated with "// namespace a3c"  [readability/namespace] [5]
+./libs/IK.cpp:39:  Could not find a newline character at the end of the file.  [whitespace/ending_newline] [5]
+./test/test.cpp:2:  Missing space after ,  [whitespace/comma] [3]
+./test/test.cpp:2:  Missing space before {  [whitespace/braces] [5]
+./test/test.cpp:3:  Missing space after ,  [whitespace/comma] [3]
+./test/test.cpp:4:  Could not find a newline character at the end of the file.  [whitespace/ending_newline] [5]
+Done processing ./app/main.cpp
+Done processing ./libs/FK.cpp
+Done processing ./libs/IK.cpp
+Done processing ./test/main.cpp
+Done processing ./test/test.cpp
+Total errors found: 28
