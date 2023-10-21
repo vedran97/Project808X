@@ -6,24 +6,26 @@
 ## Overview
 
 This repository holds the codebase for Manipulator Motion Planning project of ENPM808X at UMD,College Park.<br>
-It captures FK and IK, and Task space/Joint space level motion planning, for a 6DoF Serial manipulator.<br>
+It captures Forward Kinematics (FK) and Inverse Kinematics (IK), and Task space/Joint space level motion planning, for a 6DoF Serial manipulator with 6 revolute joints. We will ensure our design produces smooth motion,gracefully handles singularities and is self collision aware. It will be a modular and configurable design, which can be used as a plug and play library for higher level decision making/path planning tasks. The library will operate on configurable, user provided DH Parameter description provided by the user.<br>
 The UML folder captures the design diagrams used for this project.<br>
 Group1_ENPM808X_Midterm_Proposal.pdf contains our proposal towards this project.<br>
 Group1_Midterm_QuadChart.pdf contains the QuadChart for this project. <br>
 Video submission can be seen in this [LINK](https://drive.google.com/file/d/1GqNPMf5ZLAHEdCDBlPzRqtGoXQJkh4Ug/view?usp=sharing) <br>
+Agile Iterative Process (AIP) sprint planning notes can be seen in this [LINK](https://docs.google.com/document/d/1R59umaoEIouIo5Q6EGVjW_MC4JSzN4ydTtZ4WABHCmk/edit?usp=share_link) <br>
+Agile Iterative Process (AIP) Product Backlog, Iteration Backlog, and Work Log can be seen in this [LINK](https://docs.google.com/spreadsheets/d/1G443Giy0PAcKkRJnhE9VfA6vdtWn85yaL4MikvJ04wM/edit?usp=share_link) <br>
 More details to come soon!<br>
 
 ## Authors
 
 1. Vedant Ranade
 2. Aaqib Barodawala
-3. Jerry Pittman
+3. Jerry Pittman, MBA, PMP - Naval Submarine Officer and USNA Instructor
 
 ## Helpful links 
 
 1. [Gist for adding Code Coverage](https://github.com/TommyChangUMD/cpp-boilerplate-v2#how-to-use-github-ci-to-upload-coverage-report-to-codecov)
 
-## Install instructions
+## Install, Doxygen Documentation, cpplint, and cppcheck Instructions
 
 ```bash
 # Download the code:
