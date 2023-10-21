@@ -1,3 +1,14 @@
+/**
+ * @file InverseKinematics.hpp
+ * @author Jerry Pittman, Jr. (jpittma1@umd.edu)
+ * @brief InverseKinematics Class
+ * @version 0.1
+ * @date 2023-10-21
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
+
 #ifndef InverseKinematics_HPP
 #define InverseKinematics_HPP
 
@@ -18,6 +29,10 @@ namespace a3c
 {
     using JointAngles = std::array<double, 6>;
     
+    /**
+     * @brief Class IK
+     * 
+     */
     class InverseKinematics
     {
     private:

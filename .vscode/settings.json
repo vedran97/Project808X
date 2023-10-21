@@ -8,5 +8,8 @@
                     "--enable-config"
                 ],
                 "git.inputValidationLength": 500,
-                "git.inputValidationSubjectLength": null
+                "git.inputValidationSubjectLength": null,
+                "files.associations": {
+                    "iostream": "cpp"
+                }
 }

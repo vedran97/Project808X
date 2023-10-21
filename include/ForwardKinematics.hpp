@@ -43,6 +43,11 @@ namespace a3c
         DHParams(float d1, float d2, float d3,
                  float d4, float d5, float d6, float a2);
     };
+
+   /**
+    * @brief FK Class
+    * 
+    */
     class ForwardKinematics
     {
     private:
