@@ -10,7 +10,7 @@ add_executable(cpp-test
 # dependent libraries, they are automatically included.
 target_include_directories(cpp-test PUBLIC
   # list of include directories:
-  ${CMAKE_SOURCE_DIR}/include
+  ${CMAKE_SOURCE_DIR}
   )
 
 # Any dependent libraires needed to build this target.

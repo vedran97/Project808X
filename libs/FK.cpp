@@ -12,7 +12,7 @@
 #include <cmath>
 #include <iostream>
 
-#include "ForwardKinematics.hpp"
+#include "include/ForwardKinematics.hpp"
 
 namespace a3c {
 /**
@@ -36,7 +36,7 @@ ForwardKinematics::ForwardKinematics() noexcept {
  */
 Pose ForwardKinematics::fk(const JointAngles &jointAngles) noexcept {
   Matrix4d T = Matrix4d::Identity();
-  // TODO: add implementation
+  // TODO(aaqibsb): Stuff.
   return Pose(T);
 }
 /**
@@ -47,7 +47,7 @@ Pose ForwardKinematics::fk(const JointAngles &jointAngles) noexcept {
  */
 Matrix4d ForwardKinematics::getTransformationMatrix(
     const Eigen::Array<double, 1, mNumDHCols> &dhRow) const noexcept {
-  //    TODO: Add implementation
+  // TODO(aaqibsb): Stuff.
   Matrix4d T;
 
   return T;
@@ -75,7 +75,7 @@ DHParams::DHParams(float d1, float d2, float d3, float d4, float d5, float d6,
  * @return std::ostream&
  */
 std::ostream &operator<<(std::ostream &os, const Pose &pose) {
-  //    TODO: Add implementation
+  // TODO(aaqibsb): Stuff.
   return os;
 }
 }  // namespace a3c

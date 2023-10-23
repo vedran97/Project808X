@@ -9,6 +9,6 @@ add_library(Kinematics
 
 target_include_directories(Kinematics PUBLIC
 
-    ${CMAKE_SOURCE_DIR}/include
+    ${CMAKE_SOURCE_DIR}
     ${EIGEN3_INCLUDE_DIRS}
 )

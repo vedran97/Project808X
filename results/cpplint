@@ -1,19 +1,5 @@
-./app/main.cpp:14:  Could not find a newline character at the end of the file.  [whitespace/ending_newline] [5]
-./libs/FK.cpp:15:  Include the directory when naming header files  [build/include_subdir] [4]
-./libs/FK.cpp:39:  Missing username in TODO; it should look like "// TODO(my_username): Stuff."  [readability/todo] [2]
-./libs/FK.cpp:50:  Too many spaces before TODO  [whitespace/todo] [2]
-./libs/FK.cpp:50:  Missing username in TODO; it should look like "// TODO(my_username): Stuff."  [readability/todo] [2]
-./libs/FK.cpp:78:  Too many spaces before TODO  [whitespace/todo] [2]
-./libs/FK.cpp:78:  Missing username in TODO; it should look like "// TODO(my_username): Stuff."  [readability/todo] [2]
-./libs/FK.cpp:81:  Could not find a newline character at the end of the file.  [whitespace/ending_newline] [5]
-./libs/IK.cpp:14:  Include the directory when naming header files  [build/include_subdir] [4]
-./libs/IK.cpp:33:  Missing username in TODO; it should look like "// TODO(my_username): Stuff."  [readability/todo] [2]
-./libs/IK.cpp:36:  Could not find a newline character at the end of the file.  [whitespace/ending_newline] [5]
-./test/test.cpp:3:  Include the directory when naming header files  [build/include_subdir] [4]
-./test/test.cpp:4:  Include the directory when naming header files  [build/include_subdir] [4]
 Done processing ./app/main.cpp
 Done processing ./libs/FK.cpp
 Done processing ./libs/IK.cpp
 Done processing ./test/main.cpp
 Done processing ./test/test.cpp
-Total errors found: 13

@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 
-#include "ForwardKinematics.hpp"
-#include "InverseKinematics.hpp"
+#include "include/ForwardKinematics.hpp"
+#include "include/InverseKinematics.hpp"
 
 TEST(FK_Test, test_EF_position_1) {
   auto fk = a3c::ForwardKinematics();
