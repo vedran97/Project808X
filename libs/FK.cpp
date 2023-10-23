@@ -31,8 +31,8 @@ ForwardKinematics::ForwardKinematics() noexcept {
 /**
  * @brief Create fk Pose method
  *
- * @param jointAngles
- * @return Pose
+ * @param jointAngles Joint angles in radians
+ * @return Pose Pose of the End Effector
  */
 Pose ForwardKinematics::fk(const JointAngles &jointAngles) noexcept {
   Matrix4d T = Matrix4d::Identity();

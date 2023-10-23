@@ -25,7 +25,14 @@ using namespace Eigen;
 
 namespace a3c {
 using JointAngles = std::array<double, 6>;
+/**
+ @brief Pose Struct
+*/
 struct Pose {
+  /**
+  @brief Construct a new Pose object
+  @param T HomogenousTransformationMatrix
+  */
   explicit Pose(const Matrix4d &T) {
     this->position = {T(0, 3), T(1, 3), T(2, 3)};
     this->orientation = Eigen::Quaterniond(T.topLeftCorner<3, 3>());
@@ -34,15 +41,20 @@ struct Pose {
   Eigen::Quaterniond orientation;
   friend std::ostream &operator<<(std::ostream &out, const Pose &pose);
 };
+/**
+  @brief DHParams Struct
+*/
 struct DHParams {
   float d1, d2, d3, d4, d5, d6, a2;  // They are expected to be in metres
+  /**
+  Add DH params of different links of the robot
+  */
   DHParams(float d1, float d2, float d3, float d4, float d5, float d6,
            float a2);
 };
 
 /**
  * @brief FK Class
- *
  */
 class ForwardKinematics {
  public:
@@ -63,6 +75,8 @@ class ForwardKinematics {
   const DHParams dhParams{0.1915, 0.1405, 0.1415, 0.230, 0.1635, 0.1665, 0.230};
 
  public:
+ /**
+ */
   Pose fk(const JointAngles &ja) noexcept;
   ForwardKinematics() noexcept;
   Matrix4d getTransformationMatrix(
