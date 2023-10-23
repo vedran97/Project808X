@@ -39,7 +39,7 @@ class InverseKinematics {
   Matrix4d ForwardTransformationMatrix;
 
  public:
-  InverseKinematics(const Eigen::Matrix4d& FM) noexcept;
+  explicit InverseKinematics(const Eigen::Matrix4d& FM) noexcept;
   std::vector<JointAngles> ik(const JointAngles& currentAngles,
                               const JointAngles& targetAngles);
 };

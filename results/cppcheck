@@ -1,28 +1,10 @@
 Checking app/main.cpp ...
-1/5 files checked 6% done
+1/5 files checked 5% done
 Checking libs/FK.cpp ...
-include/ForwardKinematics.hpp:31:9: style: Struct 'Pose' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
-        Pose(const Matrix4d &T)
-        ^
-2/5 files checked 69% done
+2/5 files checked 50% done
 Checking libs/IK.cpp ...
-include/InverseKinematics.hpp:44:9: style: Class 'InverseKinematics' has a constructor with 1 argument that is not explicit. [noExplicitConstructor]
-        InverseKinematics(const Eigen::Matrix4d &FM) noexcept;
-        ^
-3/5 files checked 93% done
+3/5 files checked 69% done
 Checking test/main.cpp ...
-4/5 files checked 97% done
+4/5 files checked 72% done
 Checking test/test.cpp ...
 5/5 files checked 100% done
-test/test.cpp:2:0: style: The function 'TEST' is never used. [unusedFunction]
-
-^
-libs/FK.cpp:43:0: style: The function 'fk' is never used. [unusedFunction]
-
-^
-libs/FK.cpp:55:0: style: The function 'getTransformationMatrix' is never used. [unusedFunction]
-
-^
-libs/IK.cpp:34:0: style: The function 'ik' is never used. [unusedFunction]
-
-^
