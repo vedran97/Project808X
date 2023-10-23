@@ -28,8 +28,8 @@ InverseKinematics::InverseKinematics(const Eigen::Matrix4d& FM) noexcept {}
  * @param targetAngles
  * @return std::vector <JointAngles>
  */
-std::vector<JointAngles> InverseKinematics::ik(const JointAngles& currentAngles,
-                            const JointAngles& targetAngles) {
+std::vector<JointAngles> InverseKinematics::ik(
+    const JointAngles& currentAngles, const JointAngles& targetAngles) {
   // TODO: add implementation
   return {};
 }

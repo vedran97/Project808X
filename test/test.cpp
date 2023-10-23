@@ -26,6 +26,6 @@ TEST(IK_Test, test_JA_position_1) {
   auto ik = a3c::InverseKinematics(transormationMatrix);
   auto trajectory = ik.ik(currentAngles, targetAngles);
   a3c::JointAngles expectedJA = {{0, 0, -90, 0, 0, 0}};
-  std::vector<a3c::JointAngles> expectedTraj={expectedJA};
+  std::vector<a3c::JointAngles> expectedTraj = {expectedJA};
   EXPECT_EQ(trajectory, expectedTraj);
 }
