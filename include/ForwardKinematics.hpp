@@ -75,8 +75,8 @@ class ForwardKinematics {
   const DHParams dhParams{0.1915, 0.1405, 0.1415, 0.230, 0.1635, 0.1665, 0.230};
 
  public:
- /**
- */
+  /**
+   */
   Pose fk(const JointAngles &ja) noexcept;
   ForwardKinematics() noexcept;
   Matrix4d getTransformationMatrix(

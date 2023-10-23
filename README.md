@@ -25,12 +25,14 @@ More details to come soon!<br>
 
 1. [Gist for adding Code Coverage](https://github.com/TommyChangUMD/cpp-boilerplate-v2#how-to-use-github-ci-to-upload-coverage-report-to-codecov)
 
-## Install, Doxygen Documentation, cpplint, and cppcheck Instructions
+## Install, Doxygen Documentation, cpplint, cppcheck,build,test,dependency install Instructions
 
 ```bash
 # Download the code:
   git clone https://github.com/vedran97/Project808X.git
   cd Project808X
+# Install dependencies:
+  sudo apt install libeigen3-dev
 # Configure the project and generate a native build system:
   # Must re-run this command whenever any CMakeLists.txt file has been changed.
   cmake -S ./ -B build/

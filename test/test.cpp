@@ -15,7 +15,8 @@ TEST(FK_Test, test_EF_position_1) {
 }
 
 /**
-  @brief Test the Forward Kinematics Class for All angles expect J3 at 0. J3=-1.57 radians
+  @brief Test the Forward Kinematics Class for All angles expect J3 at 0.
+  J3=-1.57 radians
 */
 TEST(FK_Test, test_EF_position_2) {
   auto fk = a3c::ForwardKinematics();
