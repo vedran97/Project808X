@@ -16,6 +16,7 @@ target_include_directories(cpp-test PUBLIC
 # Any dependent libraires needed to build this target.
 target_link_libraries(cpp-test PUBLIC
   # list of libraries:
+  Kinematics
   gtest
   )
 
