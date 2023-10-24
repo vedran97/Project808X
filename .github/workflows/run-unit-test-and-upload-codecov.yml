@@ -43,6 +43,7 @@ jobs:
           sudo apt update
           sudo apt install -y software-properties-common
           sudo apt install -y doxygen lcov gcovr
+          sudo apt install libeigen3-dev
           
       # Build, run unit test, and generate coverage report
       - name: Configure CMake flags and build exectables
