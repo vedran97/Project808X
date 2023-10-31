@@ -30,6 +30,7 @@ TEST(FK_Test, test_EF_position_2) {
 
 /**
   @brief Test the IK functionality
+  @note verifies value of jacobian at angles = {0,0,0,0,0,0}
 */
 TEST(IK_Test, test_jacobian) {
   const a3c::JointAngles currentAngles = {{0, 0, 0, 0, 0, 0}};
