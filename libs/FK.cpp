@@ -36,7 +36,7 @@ ForwardKinematics::ForwardKinematics() noexcept {
  */
 Pose ForwardKinematics::fk(const JointAngles &jointAngles) noexcept {
   Matrix4d T = Matrix4d::Identity();
-  // TODO(aaqibsb): Stuff.
+
   return Pose(T);
 }
 /**
@@ -47,9 +47,15 @@ Pose ForwardKinematics::fk(const JointAngles &jointAngles) noexcept {
  */
 Matrix4d ForwardKinematics::getTransformationMatrix(
     const Eigen::Array<double, 1, mNumDHCols> &dhRow) const noexcept {
-  // TODO(aaqibsb): Stuff.
+  double sinTheta = sin(dhRow(thetaIndex));
+  double cosTheta = cos(dhRow(thetaIndex));
+  double sinAlpha = sin(dhRow(alphaIndex));
+  double cosAlpha = cos(dhRow(alphaIndex));
   Matrix4d T;
-
+  T << cosTheta, -sinTheta, 0, dhRow(aIndex), sinTheta * cosAlpha,
+      cosTheta * cosAlpha, -sinAlpha, -sinAlpha * dhRow(dIndex),
+      sinTheta * sinAlpha, cosTheta * sinAlpha, cosAlpha,
+      cosAlpha * dhRow(dIndex), 0, 0, 0, 1;
   return T;
 }
 /**
