@@ -35,10 +35,10 @@ ForwardKinematics::ForwardKinematics() noexcept {
  */
 Pose ForwardKinematics::fk(const JointAngles &jointAngles) noexcept {
   Matrix4d T = Matrix4d::Identity();
-  for(size_t i=0;i<mNumDHRows;++i){
-    dhTable(i,thetaIndex)+=jointAngles.at(i);
-    T*=getTransformationMatrix(dhTable.row(i));
-    dhTable(i,thetaIndex)-=jointAngles.at(i);
+  for (size_t i = 0; i < mNumDHRows; ++i) {
+    dhTable(i, thetaIndex) += jointAngles.at(i);
+    T *= getTransformationMatrix(dhTable.row(i));
+    dhTable(i, thetaIndex) -= jointAngles.at(i);
   }
   return Pose(T);
 }
