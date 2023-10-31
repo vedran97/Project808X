@@ -81,7 +81,15 @@ DHParams::DHParams(float d1, float d2, float d3, float d4, float d5, float d6,
  * @return std::ostream&
  */
 std::ostream &operator<<(std::ostream &os, const Pose &pose) {
-  // TODO(aaqibsb): Stuff.
+  os << "Position: \r\n"
+     << "x:" << pose.position.x() << "\r\n"
+     << "y:" << pose.position.y() << "\r\n"
+     << "z:" << pose.position.z() << "\r\n"
+     << "Orientation: \r\n"
+     << "x:" << pose.orientation.x() << "\r\n"
+     << "y:" << pose.orientation.y() << "\r\n"
+     << "z:" << pose.orientation.z() << "\r\n"
+     << "w:" << pose.orientation.w() << "\r\n\r\n";
   return os;
 }
 }  // namespace a3c
