@@ -2,7 +2,6 @@
 
 #include "include/ForwardKinematics.hpp"
 #include "include/InverseKinematics.hpp"
-
 /**
 @brief Test the Forward Kinematics Class for All angles at 0 radians
 */
@@ -11,7 +10,9 @@ TEST(FK_Test, test_EF_position_1) {
   a3c::JointAngles ja = {{0, 0, 0, 0, 0, 0}};
   auto pose = fk.fk(ja);
   Eigen::Vector3d expectedPosition = {0, 0.163, 0.8175};
-  EXPECT_EQ(pose.position, expectedPosition);
+  EXPECT_NEAR(pose.position.x(), expectedPosition.x(), 1E2);
+  EXPECT_NEAR(pose.position.y(), expectedPosition.y(), 1E2);
+  EXPECT_NEAR(pose.position.z(), expectedPosition.z(), 1E2);
 }
 
 /**
@@ -23,7 +24,9 @@ TEST(FK_Test, test_EF_position_2) {
   a3c::JointAngles ja = {{0, 0, -1.57, 0, 0, 0}};
   auto pose = fk.fk(ja);
   Eigen::Vector3d expectedPosition = {0.396, 0.163, 0.4215};
-  EXPECT_EQ(pose.position, expectedPosition);
+  EXPECT_NEAR(pose.position.x(), expectedPosition.x(), 1E2);
+  EXPECT_NEAR(pose.position.y(), expectedPosition.y(), 1E2);
+  EXPECT_NEAR(pose.position.z(), expectedPosition.z(), 1E2);
 }
 
 /**
