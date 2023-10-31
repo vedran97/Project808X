@@ -64,7 +64,7 @@ More details to come soon!<br>
 # run clang-format
   clang-format -i --style=Google $(find . -name *.cpp -o -name *.hpp | grep -vE -e "^./build/")
 # run cppcheck 
-  mkdir results -p && cppcheck --enable=all --std=c++11 -I include/ --suppress=missingInclude $( find . -name *.cpp | grep -vE -e "^./build/" ) &> results/cppcheck
+  mkdir results -p && cppcheck --enable=all --std=c++11 -I include/ --suppress=missingInclude --inline-suppr $( find . -name *.cpp | grep -vE -e "^./build/" ) &> results/cppcheck
 #run cpplint
   mkdir results -p && cpplint --filter="-legal/copyright" $( find . -name *.cpp | grep -vE -e "^./build/" ) &> results/cpplint
 

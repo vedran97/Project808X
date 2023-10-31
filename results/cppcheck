@@ -1,9 +1,6 @@
 Checking app/main.cpp ...
 1/5 files checked 3% done
 Checking libs/FK.cpp ...
-libs/FK.cpp:61:11: warning: Found suspicious operator ',' [constStatement]
-   0, 0, 0, 1);
-          ^
 2/5 files checked 53% done
 Checking libs/IK.cpp ...
 3/5 files checked 68% done

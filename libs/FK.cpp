@@ -58,7 +58,7 @@ Matrix4d ForwardKinematics::getTransformationMatrix(
   (T << cosTheta, -sinTheta, 0, dhRow(aIndex), sinTheta * cosAlpha,
    cosTheta * cosAlpha, -sinAlpha, -sinAlpha * dhRow(dIndex),
    sinTheta * sinAlpha, cosTheta * sinAlpha, cosAlpha, cosAlpha * dhRow(dIndex),
-   0, 0, 0, 1);
+   0, 0, 0, 1); // cppcheck-suppress constStatement
   return T;
 }
 /**
