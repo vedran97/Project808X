@@ -39,11 +39,11 @@ class InverseKinematics {
   float deltaTimeSecs;
   JointAngles initialJointAngles;
 
-
  public:
   explicit InverseKinematics(const JointAngles& inInitialJointAngles) noexcept;
-  std::vector <JointAngles> linearIK(const Pose& currentPose, const Pose& targetPose);
-  MatrixXd getJacobian(const JointAngles &jointAngles);
+  std::vector<JointAngles> linearIK(const Pose& currentPose,
+                                    const Pose& targetPose);
+  MatrixXd getJacobian(const JointAngles& jointAngles);
 };
 }  // namespace a3c
 
