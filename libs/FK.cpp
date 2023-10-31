@@ -30,13 +30,16 @@ ForwardKinematics::ForwardKinematics() noexcept {
 }
 /**
  * @brief Create fk Pose method
- *
  * @param jointAngles Joint angles in radians
- * @return Pose Pose of the End Effector
+ * @return Pose: Pose of the End Effector
  */
 Pose ForwardKinematics::fk(const JointAngles &jointAngles) noexcept {
   Matrix4d T = Matrix4d::Identity();
-
+  for(size_t i=0;i<mNumDHRows;++i){
+    dhTable(i,thetaIndex)+=jointAngles.at(i);
+    T*=getTransformationMatrix(dhTable.row(i));
+    dhTable(i,thetaIndex)-=jointAngles.at(i);
+  }
   return Pose(T);
 }
 /**
