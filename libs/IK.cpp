@@ -60,7 +60,7 @@ MatrixXd InverseKinematics::getJacobian(const JointAngles& jointAngles) {
     0.16350000000000001*sin(theta1)*sin(theta4)*sin(theta2 + theta3) - 0.16600000000000001*sin(theta1)*sin(theta5)*sin(theta2 + theta3)*cos(theta4) + 0.23000000000000001*sin(theta1)*cos(theta2) + 0.16600000000000001*sin(theta1)*cos(theta5)*cos(theta2 + theta3) + 0.23000000000000001*sin(theta1)*cos(theta2 + theta3),
     0.16350000000000001*sin(theta1)*sin(theta4)*sin(theta2 + theta3) - 0.16600000000000001*sin(theta1)*sin(theta5)*sin(theta2 + theta3)*cos(theta4) + 0.16600000000000001*sin(theta1)*cos(theta5)*cos(theta2 + theta3) + 0.23000000000000001*sin(theta1)*cos(theta2 + theta3),
     -0.16600000000000001*sin(theta1)*sin(theta4)*sin(theta5)*cos(theta2 + theta3) - 0.16350000000000001*sin(theta1)*cos(theta4)*cos(theta2 + theta3) - 0.16350000000000001*sin(theta4)*cos(theta1) + 0.16600000000000001*sin(theta5)*cos(theta1)*cos(theta4),
-    -0.16600000000000001*sin(theta1)*sin(theta5)*sin(theta2 + theta3) + 0.16600000000000001*sin(theta1)*cos(theta4)*cos(theta5)*cos(theta2 + theta3) + 0.16600000000000001*sin(theta4)*cos(theta1)*cos(theta5);
+    -0.16600000000000001*sin(theta1)*sin(theta5)*sin(theta2 + theta3) + 0.16600000000000001*sin(theta1)*cos(theta4)*cos(theta5)*cos(theta2 + theta3) + 0.16600000000000001*sin(theta4)*cos(theta1)*cos(theta5),
     0;
 
   J.row(2) << 0,
