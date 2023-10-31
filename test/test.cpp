@@ -1,5 +1,4 @@
 #include <gtest/gtest.h>
-
 #include "include/ForwardKinematics.hpp"
 #include "include/InverseKinematics.hpp"
 /**
@@ -32,13 +31,18 @@ TEST(FK_Test, test_EF_position_2) {
 /**
   @brief Test the IK functionality
 */
-TEST(IK_Test, test_JA_position_1) {
-  Eigen::Matrix4d transormationMatrix;
+TEST(IK_Test, test_jacobian) {
   const a3c::JointAngles currentAngles = {{0, 0, 0, 0, 0, 0}};
-  const a3c::JointAngles targetAngles = {{0, 0, 0, 0, 0, 0}};
-  // auto ik = a3c::InverseKinematics(transormationMatrix);
-  // auto trajectory = ik.ik(currentAngles, targetAngles);
-  // a3c::JointAngles expectedJA = {{0, 0, -90, 0, 0, 0}};
-  // std::vector<a3c::JointAngles> expectedTraj = {expectedJA};
-  // EXPECT_EQ(trajectory, expectedTraj);
+  auto ik = a3c::InverseKinematics(currentAngles);
+  auto jac = ik.getJacobian(currentAngles);
+  MatrixXd expectedJac(6, 6);
+  expectedJac=expectedJac.Zero(6,6);
+  expectedJac.row(0) << -0.163,0.626,0.396,-0.1653,0.166,0;
+  expectedJac.row(4)<<0,1,1,0,1,0;
+  expectedJac.row(5)<<1,0,0,1,0,1;
+  for(int i=0;i<expectedJac.rows();i++){
+    for(int j=0;j<expectedJac.cols();j++){
+      EXPECT_NEAR(jac.coeff(i,j), expectedJac.coeff(i,j), 1E2);
+    }
+  }
 }
