@@ -1,6 +1,8 @@
 /**
  * @file IK.cpp
  * @author Jerry Pittman, Jr. (jpittma1@umd.edu)
+ * @author Vedant Ranade (vedantr1@umd.edu)
+ * @author Aaqib Barodawala (abarodaw@umd.edu)
  * @brief Inverse Kinematics class implementation
  * @version 0.1
  * @date 2023-10-21
@@ -12,6 +14,7 @@
 #include <iostream>
 
 #include "Eigen/src/Core/Matrix.h"
+#include "include/ForwardKinematics.hpp"
 #include "include/InverseKinematics.hpp"
 
 namespace a3c {
@@ -20,7 +23,7 @@ namespace a3c {
  *
  * @param FM
  */
-InverseKinematics::InverseKinematics(const Eigen::Matrix4d& FM) noexcept {}
+InverseKinematics::InverseKinematics(const JointAngles& initialJointAngles) noexcept : deltaTimeSecs(1), initialJointAngles(0,0,0,0,0,0) {}
 
 /**
  * @brief Solve for Inverse Kinematics
@@ -29,8 +32,8 @@ InverseKinematics::InverseKinematics(const Eigen::Matrix4d& FM) noexcept {}
  * @param targetAngles
  * @return std::vector <JointAngles>
  */
-std::vector<JointAngles> InverseKinematics::ik(
-    const JointAngles& currentAngles, const JointAngles& targetAngles) {
+std::vector<JointAngles> InverseKinematics::linearIK(
+    const Pose& currentPose, const Pose& targetPose) {
   
   const int size = 6;
   MatrixXd J(size, size);

@@ -1,6 +1,8 @@
 /**
  * @file InverseKinematics.hpp
  * @author Jerry Pittman, Jr. (jpittma1@umd.edu)
+ * @author Vedant Ranade (vedantr1@umd.edu)
+ * @author Aaqib Barodawala (abarodaw@umd.edu)
  * @brief InverseKinematics Class
  * @version 0.1
  * @date 2023-10-21
@@ -34,14 +36,14 @@ using JointAngles = std::array<double, 6>;
  */
 class InverseKinematics {
  private:
-  using DHTable = Eigen::Array<double, ForwardKinematics::mNumDHRows,
-                               ForwardKinematics::mNumDHCols>;
-  Matrix4d ForwardTransformationMatrix;
+  float deltaTimeSecs;
+  JointAngles initialJointAngles;
+  MatrixXd getJacobian(const JointAngles &JA);
 
  public:
-  explicit InverseKinematics(const Eigen::Matrix4d& FM) noexcept;
-  std::vector<JointAngles> ik(const JointAngles& currentAngles,
-                              const JointAngles& targetAngles);
+  explicit InverseKinematics(const JointAngles& initialJointAngles) noexcept;
+  std::vector <JointAngles> linearIK(const Pose& currentPose, const Pose& targetPose);
+
 };
 }  // namespace a3c
 
