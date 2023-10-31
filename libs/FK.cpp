@@ -55,10 +55,10 @@ Matrix4d ForwardKinematics::getTransformationMatrix(
   double sinAlpha = sin(dhRow(alphaIndex));
   double cosAlpha = cos(dhRow(alphaIndex));
   Matrix4d T;
-  T << cosTheta, -sinTheta, 0, dhRow(aIndex), sinTheta * cosAlpha,
-      cosTheta * cosAlpha, -sinAlpha, -sinAlpha * dhRow(dIndex),
-      sinTheta * sinAlpha, cosTheta * sinAlpha, cosAlpha,
-      cosAlpha * dhRow(dIndex), 0, 0, 0, 1;
+  (T << cosTheta, -sinTheta, 0, dhRow(aIndex), sinTheta * cosAlpha,
+   cosTheta * cosAlpha, -sinAlpha, -sinAlpha * dhRow(dIndex),
+   sinTheta * sinAlpha, cosTheta * sinAlpha, cosAlpha, cosAlpha * dhRow(dIndex),
+   0, 0, 0, 1);
   return T;
 }
 /**
