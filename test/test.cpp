@@ -10,9 +10,9 @@ TEST(FK_Test, test_EF_position_1) {
   a3c::JointAngles ja = {{0, 0, 0, 0, 0, 0}};
   auto pose = fk.fk(ja);
   Eigen::Vector3d expectedPosition = {0, 0.163, 0.8175};
-  EXPECT_NEAR(pose.position.x(), expectedPosition.x(), 1E2);
-  EXPECT_NEAR(pose.position.y(), expectedPosition.y(), 1E2);
-  EXPECT_NEAR(pose.position.z(), expectedPosition.z(), 1E2);
+  EXPECT_NEAR(pose.position.x(), expectedPosition.x(), 1E-2);
+  EXPECT_NEAR(pose.position.y(), expectedPosition.y(), 1E-2);
+  EXPECT_NEAR(pose.position.z(), expectedPosition.z(), 1E-2);
 }
 
 /**
@@ -23,10 +23,10 @@ TEST(FK_Test, test_EF_position_2) {
   auto fk = a3c::ForwardKinematics();
   a3c::JointAngles ja = {{0, 0, -1.57, 0, 0, 0}};
   auto pose = fk.fk(ja);
-  Eigen::Vector3d expectedPosition = {0.396, 0.163, 0.4215};
-  EXPECT_NEAR(pose.position.x(), expectedPosition.x(), 1E2);
-  EXPECT_NEAR(pose.position.y(), expectedPosition.y(), 1E2);
-  EXPECT_NEAR(pose.position.z(), expectedPosition.z(), 1E2);
+  Eigen::Vector3d expectedPosition = {-0.396, 0.163, 0.4215};
+  EXPECT_NEAR(pose.position.x(), expectedPosition.x(), 1E-2);
+  EXPECT_NEAR(pose.position.y(), expectedPosition.y(), 1E-2);
+  EXPECT_NEAR(pose.position.z(), expectedPosition.z(), 1E-2);
 }
 
 /**
@@ -46,7 +46,7 @@ TEST(IK_Test, test_jacobian) {
   expectedJac.row(5) << 1, 0, 0, 1, 0, 1;  // cppcheck-suppress constStatement
   for (int i = 0; i < expectedJac.rows(); i++) {
     for (int j = 0; j < expectedJac.cols(); j++) {
-      EXPECT_NEAR(jac.coeff(i, j), expectedJac.coeff(i, j), 1E4);
+      EXPECT_NEAR(jac.coeff(i, j), expectedJac.coeff(i, j), 1E-2);
     }
   }
 }
@@ -76,17 +76,17 @@ TEST(IK_Test, test_trajectories) {
   std::cout << "\r\ncomputed Final pose:\n"
             << computedFinalPosition << std::endl;
   EXPECT_NEAR(expectedTargetPose.position.x(),
-              computedFinalPosition.position.x(), 1E4);
+              computedFinalPosition.position.x(), 1E-3);
   EXPECT_NEAR(expectedTargetPose.position.y(),
-              computedFinalPosition.position.y(), 1E4);
+              computedFinalPosition.position.y(), 1E-3);
   EXPECT_NEAR(expectedTargetPose.position.z(),
-              computedFinalPosition.position.z(), 1E4);
+              computedFinalPosition.position.z(), 1E-3);
   EXPECT_NEAR(expectedTargetPose.orientation.x(),
-              computedFinalPosition.orientation.x(), 1E4);
+              computedFinalPosition.orientation.x(), 1E-3);
   EXPECT_NEAR(expectedTargetPose.orientation.y(),
-              computedFinalPosition.orientation.y(), 1E4);
+              computedFinalPosition.orientation.y(), 1E-3);
   EXPECT_NEAR(expectedTargetPose.orientation.z(),
-              computedFinalPosition.orientation.z(), 1E4);
+              computedFinalPosition.orientation.z(), 1E-3);
   EXPECT_NEAR(expectedTargetPose.orientation.w(),
-              computedFinalPosition.orientation.w(), 1E4);
+              computedFinalPosition.orientation.w(), 1E-3);
 }
