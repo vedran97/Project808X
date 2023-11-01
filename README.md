@@ -10,9 +10,10 @@ It captures Forward Kinematics (FK) and Inverse Kinematics (IK), and Task space/
 The UML folder captures the design diagrams used for this project.<br>
 Group1_ENPM808X_Midterm_Proposal.pdf contains our proposal towards this project.<br>
 Group1_Midterm_QuadChart.pdf contains the QuadChart for this project. <br>
-Video submission can be seen in this [LINK](https://drive.google.com/file/d/1GqNPMf5ZLAHEdCDBlPzRqtGoXQJkh4Ug/view?usp=sharing) <br>
+Midterm Phase 1 Video submission can be seen in this [LINK](https://drive.google.com/file/d/1GqNPMf5ZLAHEdCDBlPzRqtGoXQJkh4Ug/view?usp=sharing) <br>
 Agile Iterative Process (AIP) sprint planning notes can be seen in this [LINK](https://docs.google.com/document/d/1R59umaoEIouIo5Q6EGVjW_MC4JSzN4ydTtZ4WABHCmk/edit?usp=share_link) <br>
 Agile Iterative Process (AIP) Product Backlog, Iteration Backlog, and Work Log can be seen in this [LINK](https://docs.google.com/spreadsheets/d/1G443Giy0PAcKkRJnhE9VfA6vdtWn85yaL4MikvJ04wM/edit?usp=share_link) <br>
+MIDTERM PHASE 2 VIDEO SUBMISSION CAN BE SEEN HERE:[LINK](https://drive.google.com/file/d/14VuUJjYKjkGRN-iqoakSQumX8Vin-YXz/view?usp=sharing)<br>
 Added IK and FK implementation.
 
 ## Authors
