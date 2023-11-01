@@ -51,6 +51,8 @@ if ( DOXYGEN_FOUND )
   set( DOXYGEN_DOT_GRAPH_MAX_NODES  100 )
   set( DOXYGEN_MAX_DOT_GRAPH_DEPTH  0 )
   set( DOXYGEN_DOT_TRANSPARENT      YES )
+  set( DOXYGEN_MARKDOWN_SUPPORT       YES)
+  set( DOXYGEN_USE_MDFILE_AS_MAINPAGE "README.md")
 else()
   message( FATAL_ERROR "Doxygen needs to be installed to generate the doxygen documentation" )
 endif()
@@ -101,6 +103,7 @@ doxygen_add_docs(docs           # target name
   ${PROJECT_SOURCE_DIR}/app
   ${PROJECT_SOURCE_DIR}/libs
   ${PROJECT_SOURCE_DIR}/include
+  ${PROJECT_SOURCE_DIR}/README.md
   )
 
 # create targets for building code coverage reports

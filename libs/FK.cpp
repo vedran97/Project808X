@@ -30,13 +30,16 @@ ForwardKinematics::ForwardKinematics() noexcept {
 }
 /**
  * @brief Create fk Pose method
- *
  * @param jointAngles Joint angles in radians
- * @return Pose Pose of the End Effector
+ * @return Pose: Pose of the End Effector
  */
 Pose ForwardKinematics::fk(const JointAngles &jointAngles) noexcept {
   Matrix4d T = Matrix4d::Identity();
-  // TODO(aaqibsb): Stuff.
+  for (size_t i = 0; i < mNumDHRows; ++i) {
+    dhTable(i, thetaIndex) += jointAngles.at(i);
+    T *= getTransformationMatrix(dhTable.row(i));
+    dhTable(i, thetaIndex) -= jointAngles.at(i);
+  }
   return Pose(T);
 }
 /**
@@ -47,9 +50,15 @@ Pose ForwardKinematics::fk(const JointAngles &jointAngles) noexcept {
  */
 Matrix4d ForwardKinematics::getTransformationMatrix(
     const Eigen::Array<double, 1, mNumDHCols> &dhRow) const noexcept {
-  // TODO(aaqibsb): Stuff.
+  double sinTheta = sin(dhRow(thetaIndex));
+  double cosTheta = cos(dhRow(thetaIndex));
+  double sinAlpha = sin(dhRow(alphaIndex));
+  double cosAlpha = cos(dhRow(alphaIndex));
   Matrix4d T;
-
+  (T << cosTheta, -sinTheta, 0, dhRow(aIndex), sinTheta * cosAlpha,
+   cosTheta * cosAlpha, -sinAlpha, -sinAlpha * dhRow(dIndex),
+   sinTheta * sinAlpha, cosTheta * sinAlpha, cosAlpha, cosAlpha * dhRow(dIndex),
+   0, 0, 0, 1);  // cppcheck-suppress constStatement
   return T;
 }
 /**
@@ -75,7 +84,15 @@ DHParams::DHParams(float d1, float d2, float d3, float d4, float d5, float d6,
  * @return std::ostream&
  */
 std::ostream &operator<<(std::ostream &os, const Pose &pose) {
-  // TODO(aaqibsb): Stuff.
+  os << "Position: \r\n"
+     << "x:" << pose.position.x() << "\r\n"
+     << "y:" << pose.position.y() << "\r\n"
+     << "z:" << pose.position.z() << "\r\n"
+     << "Orientation: \r\n"
+     << "x:" << pose.orientation.x() << "\r\n"
+     << "y:" << pose.orientation.y() << "\r\n"
+     << "z:" << pose.orientation.z() << "\r\n"
+     << "w:" << pose.orientation.w() << "\r\n\r\n";
   return os;
 }
 }  // namespace a3c
