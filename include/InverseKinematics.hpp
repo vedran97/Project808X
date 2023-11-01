@@ -36,13 +36,18 @@ using JointAngles = std::array<double, 6>;
  */
 class InverseKinematics {
  private:
+  // @brief Time step for integration
   float deltaTimeSecs;
+  // @brief Initial Joint Angles
   JointAngles initialJointAngles;
 
  public:
   explicit InverseKinematics(const JointAngles& inInitialJointAngles) noexcept;
+  // @brief Solve for Inverse Kinematics, given currentPose and targetPose as a
+  // Linear translation between current and targetPose
   std::vector<JointAngles> linearIK(const Pose& currentPose,
                                     const Pose& targetPose);
+  // @brief Get jacobian matrix for a current set of robot joint angles
   MatrixXd getJacobian(const JointAngles& jointAngles);
 };
 }  // namespace a3c

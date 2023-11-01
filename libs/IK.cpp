@@ -82,6 +82,12 @@ std::vector<JointAngles> InverseKinematics::linearIK(const Pose& currentPose,
   return jointTrajectory;
 }
 
+/**
+ @brief Get Jacobian Matrix for the given joint angles
+ @note This function takes in jointAngles and returns a 6x6 Jacobian Matrix
+ @param jointAngles 6 joint angles of the robot
+ @return MatrixXd 6x6 Jacobian Matrix
+*/
 MatrixXd InverseKinematics::getJacobian(const JointAngles& jointAngles) {
   const auto jacobianSize = 6;
   MatrixXd J(jacobianSize, jacobianSize);
