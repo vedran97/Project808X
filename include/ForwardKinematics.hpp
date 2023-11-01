@@ -23,10 +23,13 @@
 
 using namespace Eigen;
 
+//@brief Namespace a3c
 namespace a3c {
 using JointAngles = std::array<double, 6>;
 /**
- @brief Pose Struct
+ @brief Pose struct
+ @note Contains position and orientation , which are extracted from a 4x4
+ Transformations Matrix
 */
 struct Pose {
   /**
@@ -42,12 +45,13 @@ struct Pose {
   friend std::ostream &operator<<(std::ostream &out, const Pose &pose);
 };
 /**
-  @brief DHParams Struct
+  @brief DHParams Struct captures the DH parameters of the robot
+  @note Contains DH parameters of the A3C 6DoF serial manipulator
 */
 struct DHParams {
-  float d1, d2, d3, d4, d5, d6, a2;  // They are expected to be in metres
+  float d1, d2, d3, d4, d5, d6, a2;  // @note They are expected to be in metres
   /**
-  Add DH params of different links of the robot
+   @brief Assign DH params of robot
   */
   DHParams(float d1, float d2, float d3, float d4, float d5, float d6,
            float a2);
@@ -55,6 +59,8 @@ struct DHParams {
 
 /**
  * @brief FK Class
+ * @note Computes the Forward Kinematics of the robot, and outputs the Pose of
+ * the end effector given joint angles
  */
 class ForwardKinematics {
  public:

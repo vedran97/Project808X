@@ -53,7 +53,9 @@ TEST(IK_Test, test_jacobian) {
 
 /**
   @brief Test the IK functionality
-  @note verifies joint trajectories for a certian start and endPose
+  @note verifies joint trajectories for a certian start and endPose. This is
+  done by doing an FK on the final joint angles and comparing it to the
+  targetPose
 */
 TEST(IK_Test, test_trajectories) {
   const a3c::JointAngles currentAngles = {
