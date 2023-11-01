@@ -49,7 +49,7 @@ std::vector<JointAngles> InverseKinematics::linearIK(const Pose& currentPose,
     JointAngles ja = {vec[0], vec[1], vec[2], vec[3], vec[4], vec[5]};
     return ja;
   };
-  auto oldPosition=currentPosition;
+  auto oldPosition = currentPosition;
   for (;;) {
     if (phi >= 1) {
       break;
@@ -57,11 +57,11 @@ std::vector<JointAngles> InverseKinematics::linearIK(const Pose& currentPose,
     auto newPosition = ((1 - phi) * currentPosition) + (phi * targetPosition);
     auto dPos_dt = (newPosition - oldPosition) / deltaTimeSecs;
     VectorXd dpos_dt_vec(6);
-    for(int i=0;i<3;i++){
-        dpos_dt_vec[i]=dPos_dt[i];
+    for (int i = 0; i < 3; i++) {
+      dpos_dt_vec[i] = dPos_dt[i];
     }
-    for(int i=3;i<6;i++){
-        dpos_dt_vec[i]=0;
+    for (int i = 3; i < 6; i++) {
+      dpos_dt_vec[i] = 0;
     }
     auto joint_vels = getJacobian(currentAngles)
                           .completeOrthogonalDecomposition()
@@ -76,7 +76,7 @@ std::vector<JointAngles> InverseKinematics::linearIK(const Pose& currentPose,
     jointTrajectory.push_back(newJA);
     currentAngles = newJA;
     phi += dPhi_dt * deltaTimeSecs;
-    oldPosition=newPosition;
+    oldPosition = newPosition;
   }
   jointTrajectory.shrink_to_fit();
   return jointTrajectory;
