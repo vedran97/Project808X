@@ -50,3 +50,31 @@ TEST(IK_Test, test_jacobian) {
     }
   }
 }
+
+/**
+  @brief Test the IK functionality
+  @note verifies joint trajectories for a certian start and endPose
+*/
+TEST(IK_Test, test_trajectories) {
+  const a3c::JointAngles currentAngles = {{-2.11696,-0.370079,-1.3761,-0.000627978,-1.3936,-2.11535}};
+  auto ik = a3c::InverseKinematics(currentAngles);
+  auto fk = a3c::ForwardKinematics();
+  auto currentPose = fk.fk(currentAngles);
+  auto expectedTargetPose = currentPose;
+  Eigen::Vector3d positionDelta;
+  positionDelta << -0.2,-0.01,+0.001;
+  expectedTargetPose.position = expectedTargetPose.position + positionDelta;
+  auto jointTrajectory=ik.linearIK(currentPose,expectedTargetPose);
+  std::cout<< "\r\njointTrajecotry length:" << jointTrajectory.size()<< std::endl;
+  std::cout<<"\r\n Current Pose:\n"<<currentPose<<std::endl;
+  std::cout<<"\r\nExpected Target pose:\n"<< expectedTargetPose<<std::endl;
+  auto computedFinalPosition = fk.fk(jointTrajectory.back());
+  std::cout<<"\r\ncomputed Final pose:\n" <<  computedFinalPosition<< std::endl;
+  EXPECT_NEAR(expectedTargetPose.position.x(), computedFinalPosition.position.x(), 1E4);
+  EXPECT_NEAR(expectedTargetPose.position.y(), computedFinalPosition.position.y(), 1E4);
+  EXPECT_NEAR(expectedTargetPose.position.z(), computedFinalPosition.position.z(), 1E4);
+  EXPECT_NEAR(expectedTargetPose.orientation.x(), computedFinalPosition.orientation.x(), 1E4);
+  EXPECT_NEAR(expectedTargetPose.orientation.y(), computedFinalPosition.orientation.y(), 1E4);
+  EXPECT_NEAR(expectedTargetPose.orientation.z(), computedFinalPosition.orientation.z(), 1E4);
+  EXPECT_NEAR(expectedTargetPose.orientation.w(), computedFinalPosition.orientation.w(), 1E4);
+}

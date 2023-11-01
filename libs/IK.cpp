@@ -24,7 +24,7 @@ namespace a3c {
  */
 InverseKinematics::InverseKinematics(
     const JointAngles& inInitialJointAngles) noexcept
-    : deltaTimeSecs(1) {
+    : deltaTimeSecs(0.001) {
   this->initialJointAngles = inInitialJointAngles;
 }
 
@@ -40,25 +40,33 @@ InverseKinematics::InverseKinematics(
 std::vector<JointAngles> InverseKinematics::linearIK(const Pose& currentPose,
                                                      const Pose& targetPose) {
   std::vector<JointAngles> jointTrajectory;
-  auto phi = 0;
+  auto phi = 0.0;
   auto dPhi_dt = 1;
-  auto& currentPosition = currentPose.position;
-  auto& targetPosition = targetPose.position;
+  auto currentPosition = currentPose.position;
+  auto targetPosition = targetPose.position;
   auto currentAngles = initialJointAngles;
   auto getJointAnglesFromVector = [](const auto& vec) {
     JointAngles ja = {vec[0], vec[1], vec[2], vec[3], vec[4], vec[5]};
     return ja;
   };
+  auto oldPosition=currentPosition;
   for (;;) {
     if (phi >= 1) {
       break;
     }
-    auto newPosition = (1 - phi) * currentPosition + phi * targetPosition;
-    auto dPos_dt = (newPosition - currentPosition) / deltaTimeSecs;
+    auto newPosition = ((1 - phi) * currentPosition) + (phi * targetPosition);
+    auto dPos_dt = (newPosition - oldPosition) / deltaTimeSecs;
+    VectorXd dpos_dt_vec(6);
+    for(int i=0;i<3;i++){
+        dpos_dt_vec[i]=dPos_dt[i];
+    }
+    for(int i=3;i<6;i++){
+        dpos_dt_vec[i]=0;
+    }
     auto joint_vels = getJacobian(currentAngles)
                           .completeOrthogonalDecomposition()
                           .pseudoInverse() *
-                      dPos_dt;
+                      dpos_dt_vec;
     JointAngles newJA;
     auto jointvel_into_delta_t =
         getJointAnglesFromVector(joint_vels * deltaTimeSecs);
@@ -68,6 +76,7 @@ std::vector<JointAngles> InverseKinematics::linearIK(const Pose& currentPose,
     jointTrajectory.push_back(newJA);
     currentAngles = newJA;
     phi += dPhi_dt * deltaTimeSecs;
+    oldPosition=newPosition;
   }
   jointTrajectory.shrink_to_fit();
   return jointTrajectory;
