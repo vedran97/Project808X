@@ -30,14 +30,47 @@ InverseKinematics::InverseKinematics(
 
 /**
  * @brief Solve for Inverse Kinematics
- *
+ * @note This function takes in currentPose, targetPose and gives a vector of
+ * jointAngles which result in a linear translation between currentPose and
+ * TargetPose
  * @param currentAngles
  * @param targetAngles
  * @return std::vector <JointAngles>
  */
 std::vector<JointAngles> InverseKinematics::linearIK(const Pose& currentPose,
                                                      const Pose& targetPose) {
-  return {};
+  std::vector<JointAngles> jointTrajectory;
+  auto phi = 0;
+  auto dPhi_dt = 1;
+  auto& currentPosition = currentPose.position;
+  auto& targetPosition = targetPose.position;
+  auto currentAngles = initialJointAngles;
+  auto getJointAnglesFromVector = [](const auto& vec) {
+    JointAngles ja = {vec[0], vec[1], vec[2], vec[3], vec[4], vec[5]};
+    return ja;
+  };
+  for (;;) {
+    if (phi >= 1) {
+      break;
+    }
+    auto newPosition = (1 - phi) * currentPosition + phi * targetPosition;
+    auto dPos_dt = (newPosition - currentPosition) / deltaTimeSecs;
+    auto joint_vels = getJacobian(currentAngles)
+                          .completeOrthogonalDecomposition()
+                          .pseudoInverse() *
+                      dPos_dt;
+    JointAngles newJA;
+    auto jointvel_into_delta_t =
+        getJointAnglesFromVector(joint_vels * deltaTimeSecs);
+    for (int i = 0; i < 6; i++) {
+      newJA[i] = currentAngles[i] + jointvel_into_delta_t[i];
+    }
+    jointTrajectory.push_back(newJA);
+    currentAngles = newJA;
+    phi += dPhi_dt * deltaTimeSecs;
+  }
+  jointTrajectory.shrink_to_fit();
+  return jointTrajectory;
 }
 
 MatrixXd InverseKinematics::getJacobian(const JointAngles& jointAngles) {
