@@ -63,7 +63,7 @@ TEST(IK_Test, test_trajectories) {
   auto currentPose = fk.fk(currentAngles);
   auto expectedTargetPose = currentPose;
   Eigen::Vector3d positionDelta;
-  positionDelta << -0.2, -0.01, +0.001;
+  positionDelta << -0.2, -0.01, +0.001;  // cppcheck-suppress constStatement
   expectedTargetPose.position = expectedTargetPose.position + positionDelta;
   auto jointTrajectory = ik.linearIK(currentPose, expectedTargetPose);
   std::cout << "\r\njointTrajecotry length:" << jointTrajectory.size()
